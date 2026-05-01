@@ -23,6 +23,11 @@
       font-size: 16px;
       line-height: 1.65;
       letter-spacing: -0.01em;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    p, li, h1, h2, h3, h4, .hero-tag, .timeline-body, .project-desc, .hl-desc {
+      text-wrap: pretty;
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
@@ -147,6 +152,7 @@
       font-weight: 800;
       margin-bottom: 8px;
     }
+    .hero-name .line { display: block; }
     .hero-name .divider {
       display: inline-block;
       width: clamp(40px, 6vw, 70px);
@@ -162,6 +168,8 @@
       margin-top: 22px;
       line-height: 1.7;
     }
+    .hero-tag span { display: block; }
+    .hero-tag span + span { margin-top: 6px; }
     .hero-meta {
       margin-top: 44px;
       display: flex;
@@ -173,7 +181,7 @@
       color: var(--soft);
       text-transform: uppercase;
     }
-    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-meta > span { display: inline-flex; align-items: center; gap: 8px; }
     .hero-meta .dot {
       width: 6px; height: 6px; background: #000; border-radius: 0;
     }
@@ -208,6 +216,7 @@
     }
     .about-lead strong { font-weight: 700; }
     .about-body p { color: var(--muted); margin-bottom: 18px; line-height: 1.8; }
+    .about-body p.about-lead { color: var(--fg); margin-bottom: 24px; }
     .info-list {
       display: grid;
       grid-template-columns: 110px 1fr;
@@ -331,11 +340,12 @@
       color: var(--soft);
       margin-bottom: 12px;
     }
+    .skill-desc { color: var(--muted); font-size: 14px; margin: 0; }
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 14px;
     }
     .skill-tag {
       font-size: 13px;
@@ -417,6 +427,7 @@
       font-size: 12px;
       letter-spacing: 0.15em;
       color: var(--soft);
+      line-height: 1.7;
     }
     .project-meta .org {
       display: block;
@@ -496,7 +507,7 @@
       color: var(--soft);
       letter-spacing: 0.1em;
     }
-    .edu-item .desc { color: var(--fg); font-size: 14.5px; }
+    .edu-item .desc { color: var(--fg); font-size: 14.5px; line-height: 1.7; }
     .edu-item .desc small { color: var(--soft); display: block; margin-top: 2px; font-size: 12px; }
     .edu-item .rank {
       display: inline-block;
@@ -531,7 +542,8 @@
       letter-spacing: -0.02em;
       color: #fff;
     }
-    .contact-tag span { color: rgba(255,255,255,0.5); }
+    .contact-tag .row { display: block; }
+    .contact-tag .row.muted { color: rgba(255,255,255,0.5); }
     .contact-list {
       display: flex;
       flex-direction: column;
@@ -652,6 +664,14 @@
       line-height: 1.7;
       margin: 0 0 12px;
     }
+    .training-card code {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 12.5px;
+      padding: 1px 6px;
+      background: #f0f0f0;
+      border-radius: 3px;
+      color: #0a0a0a;
+    }
     .training-card .tags {
       display: flex; flex-wrap: wrap; gap: 6px;
     }
@@ -690,10 +710,13 @@
     <div class="container hero-grid">
       <div>
         <div class="hero-eyebrow">Portfolio · 2026</div>
-        <h1 class="hero-name">JUNG<br/>DONG<span class="divider"></span>HYUN</h1>
+        <h1 class="hero-name">
+          <span class="line">JUNG</span>
+          <span class="line">DONG<span class="divider"></span>HYUN</span>
+        </h1>
         <p class="hero-tag">
-          정책 수립부터 보안관제, 솔루션 운영, 그리고 교육·강의까지.<br/>
-          <strong>거버넌스 · 운영 · 사람</strong>의 세 축을 모두 다루는 <strong>Security Engineer</strong>입니다.
+          <span>정책 수립부터 보안관제, 솔루션 운영, 그리고 교육·강의까지.</span>
+          <span><strong>거버넌스 · 운영 · 사람</strong>의 세 축을 모두 다루는 <strong>Security Engineer</strong>입니다.</span>
         </p>
         <div class="hero-meta">
           <span><i class="dot"></i> Security Engineer</span>
@@ -716,7 +739,7 @@
             <strong>금융보안원 보안관제 PL</strong>로 24/365 침해대응을 수행하며,
             <strong>전 직원 65명 대상 보안·AI 강의</strong>까지 직접 진행한 보안 엔지니어입니다.
           </p>
-          <p style="margin-top:24px;">
+          <p>
             정보보안 정책·지침 제·개정과 같은 거버넌스 업무, 방화벽·DLP·매체제어 등 보안 솔루션 운영,
             SPLUNK·SOAR 기반의 실시간 보안관제와 탐지룰 최적화, 그리고 사내 보안 인식 제고를 위한 교육까지
             보안 업무의 전 영역을 직접 다뤄왔습니다.
@@ -819,7 +842,7 @@
 
         <div class="skill-block">
           <div class="skill-cat">Security Operations</div>
-          <p style="color:var(--muted); font-size:14px;">실시간 관제 · 정책 최적화 · 솔루션 운영</p>
+          <p class="skill-desc">실시간 관제 · 정책 최적화 · 솔루션 운영</p>
           <div class="skill-tags">
             <span class="skill-tag">SPLUNK</span>
             <span class="skill-tag">SOAR (AIR)</span>
@@ -837,7 +860,7 @@
 
         <div class="skill-block">
           <div class="skill-cat">Programming &amp; Dev</div>
-          <p style="color:var(--muted); font-size:14px;">자동화 · 어플리케이션 · 대시보드</p>
+          <p class="skill-desc">자동화 · 어플리케이션 · 대시보드</p>
           <div class="skill-tags">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">JavaScript</span>
@@ -852,7 +875,7 @@
 
         <div class="skill-block">
           <div class="skill-cat">Database &amp; Infra</div>
-          <p style="color:var(--muted); font-size:14px;">데이터 처리 · 인프라 운영</p>
+          <p class="skill-desc">데이터 처리 · 인프라 운영</p>
           <div class="skill-tags">
             <span class="skill-tag">Oracle</span>
             <span class="skill-tag">MySQL</span>
@@ -865,7 +888,7 @@
 
         <div class="skill-block">
           <div class="skill-cat">Governance &amp; Soft Skills</div>
-          <p style="color:var(--muted); font-size:14px;">정책 · 컴플라이언스 · 커뮤니케이션</p>
+          <p class="skill-desc">정책 · 컴플라이언스 · 커뮤니케이션</p>
           <div class="skill-tags">
             <span class="skill-tag">CPPG</span>
             <span class="skill-tag">정책·지침 제·개정</span>
@@ -1121,13 +1144,12 @@
 
           <div class="photo-gallery">
             <div class="photo-frame" id="lecture-photo-1">
-              <img src="lecture-1.JPG" alt="한국섬진흥원 AI 활용법 강의 — 프롬프트 엔지니어링" onerror="this.style.display='none';this.parentNode.classList.add('placeholder');this.parentNode.innerHTML='<div class=&quot;ph-text&quot;>📷 PHOTO PLACEHOLDERAI 강의 — 프롬프트 엔지니어링</div>';" />
+              <img src="lecture-1.JPG" alt="한국섬진흥원 AI 활용법 강의 — 프롬프트 엔지니어링" onerror="this.style.display='none';this.parentNode.classList.add('placeholder');this.parentNode.innerHTML='<div class=&quot;ph-text&quot;>📷 PHOTO PLACEHOLDER<br/>lecture-1.JPG<br/>AI 강의 — 프롬프트 엔지니어링</div>';" />
               <div class="caption">한국섬진흥원 · AI 활용법 강의</div>
             </div>
             <div class="photo-frame" id="lecture-photo-2">
               <img src="lecture-2.jpg" alt="해킹 메일 교육" onerror="this.style.display='none';this.parentNode.classList.add('placeholder');this.parentNode.innerHTML='<div class=&quot;ph-text&quot;>📷 PHOTO PLACEHOLDER<br/>lecture-2.jpg<br/>해킹 메일 교육</div>';" />
               <div class="caption">해킹 메일 교육</div>
-              </div>
             </div>
           </div>
         </div>
@@ -1140,7 +1162,7 @@
   <section id="credentials">
     <div class="container">
       <div class="section-eyebrow">06 · Education &amp; License</div>
-      <h2 class="section-title"> Education · License</h2>
+      <h2 class="section-title">Education · License</h2>
 
       <div class="grid-2">
 
@@ -1166,9 +1188,7 @@
             </span>
           </div>
         </div>
-      </div>
 
-      <div class="grid-2" style="margin-top: 56px;">
         <div class="sub-section">
           <h3>License</h3>
           <div class="edu-item">
@@ -1184,6 +1204,10 @@
             <span class="desc">네트워크관리사 2급</span>
           </div>
         </div>
+
+      </div>
+
+      <div class="grid-2" style="margin-top: 56px;">
         <div class="sub-section">
           <h3>Past Experience</h3>
           <div class="edu-item">
@@ -1205,9 +1229,9 @@
       <div class="contact-grid">
         <div>
           <p class="contact-tag">
-            보안에 관해<br/>
-            <span>이야기 나누고 싶으시면</span><br/>
-            언제든 연락 주세요.
+            <span class="row">보안에 관해</span>
+            <span class="row muted">이야기 나누고 싶으시면</span>
+            <span class="row">언제든 연락 주세요.</span>
           </p>
         </div>
         <div class="contact-list">
